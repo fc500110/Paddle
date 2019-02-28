@@ -90,23 +90,3 @@ class AnakinOpConverter {
 }  // namespace anakin
 }  // namespace inference
 }  // namespace paddle
-
-#define REGISTER_ANAKIN_OP_CONVERTER(op_type__, Converter__)                \
-  struct anakin_##op_type__##_converter                                     \
-      : public ::paddle::framework::Registrar {                             \
-    anakin_##op_type__##_converter() {                                      \
-      ::paddle::inference::                                                 \
-          Registry<paddle::inference::anakin::AnakinOpConverter>::Register< \
-              ::paddle::inference::anakin::Converter__>(#op_type__);        \
-    }                                                                       \
-  };                                                                        \
-  anakin_##op_type__##_converter anakin_##op_type__##_converter__;          \
-  int TouchConverterRegister_anakin_##op_type__() {                         \
-    anakin_##op_type__##_converter__.Touch();                               \
-    return 0;                                                               \
-  }
-
-#define USE_ANAKIN_CONVERTER(op_type__)                                    \
-  extern int TouchConverterRegister_anakin_##op_type__();                  \
-  static int use_op_converter_anakin_##op_type__ __attribute__((unused)) = \
-      TouchConverterRegister_anakin_##op_type__();
