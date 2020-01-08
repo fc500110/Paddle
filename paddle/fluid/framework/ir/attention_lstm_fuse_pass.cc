@@ -48,6 +48,35 @@ void FindWhileOp(Graph* graph) {
   std::unordered_set<int> fused_external_ops(
       {35, 36, 37, 38, 43, 44, 49, 45, 46, 47, 41, 42, 53, 54, 48,
        57, 55, 56, 52, 74, 80, 77, 78, 79, 50, 77, 39, 40, 51});
+  // 35 -> 41
+  // 36 -> 42
+  // 37 -> 43
+  // 38 -> 44
+  // 43 -> 49
+  // 44 -> 50
+  // 49 -> 55
+  // 45 -> 51
+  // 46 -> 52
+  // 47 -> 53
+  // 41 -> 47
+  // 42 -> 48
+  // 53 -> 59
+  // 54 -> 60
+  // 48 -> 54
+  // 57 -> 63
+  // 55 -> 61
+  // 56 -> 62
+  // 52 -> 58
+  // 74 -> 80
+  // 80 -> 86
+  // 77 -> 83
+  // 78 -> 84
+  // 79 -> 85
+  // 50 -> 56
+  // 77 -> 83
+  // 39 -> 45
+  // 40 -> 46
+  // 51 -> 57
 
   gpd.mutable_pattern()->NewNode(
       [&](Node* n) { return fused_external_ops.count(n->id()); }, "while");
@@ -92,10 +121,14 @@ void FindWhileOp(Graph* graph) {
 #undef OP_SET_IN
 #undef OP_SET_OUT
 
-  auto* X = graph->RetrieveNode(34);
-  auto* LSTMOUT = graph->RetrieveNode(81);
-  auto* cell_init = graph->RetrieveNode(6);
-  auto* hidden_init = graph->RetrieveNode(8);
+  //auto* X = graph->RetrieveNode(34);
+  //auto* LSTMOUT = graph->RetrieveNode(81);
+  //auto* cell_init = graph->RetrieveNode(6);
+  //auto* hidden_init = graph->RetrieveNode(8);
+  auto* X = graph->RetrieveNode(40);
+  auto* LSTMOUT = graph->RetrieveNode(87);
+  auto* cell_init = graph->RetrieveNode(12);
+  auto* hidden_init = graph->RetrieveNode(14);
 
   auto* lstm_op = graph->CreateOpNode(&op_desc);
   PrepareParameters(graph, param);
