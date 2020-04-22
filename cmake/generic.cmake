@@ -15,7 +15,7 @@
 
 
 # generic.cmake defines CMakes functions that look like Bazel's
-# building rules (https://bazel.build/).
+# building rules (http://bazel.build/).
 #
 #
 # -------------------------------------------
@@ -305,7 +305,7 @@ function(cc_library TARGET_NAME)
         endif(WIN32)
       endif()
       # remove link to python, see notes at:
-      # https://github.com/pybind/pybind11/blob/master/docs/compiling.rst#building-manually
+      # http://github.com/pybind/pybind11/blob/master/docs/compiling.rst#building-manually
       if("${cc_library_DEPS};" MATCHES "python;")
         list(REMOVE_ITEM cc_library_DEPS python)
         add_dependencies(${TARGET_NAME} python)

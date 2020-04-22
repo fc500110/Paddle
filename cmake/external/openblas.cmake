@@ -22,7 +22,7 @@ IF(NOT WIN32)
         CACHE FILEPATH "openblas library." FORCE)
     SET(CBLAS_INC_DIR "${CBLAS_INSTALL_DIR}/include" CACHE PATH "openblas include directory." FORCE)
     SET(OPENBLAS_CC "${CMAKE_C_COMPILER} -Wno-unused-but-set-variable -Wno-unused-variable")
-    SET(OPENBLAS_COMMIT "v0.3.7")
+    SET(OPENBLAS_COMMIT "v0.2.18")
 
     IF(APPLE)
         SET(OPENBLAS_CC "${CMAKE_C_COMPILER} -isysroot ${CMAKE_OSX_SYSROOT}")
@@ -37,12 +37,12 @@ IF(NOT WIN32)
         extern_openblas
         ${EXTERNAL_PROJECT_LOG_ARGS}
         ${SHALLOW_CLONE}
-        GIT_REPOSITORY      https://github.com/xianyi/OpenBLAS.git
+        GIT_REPOSITORY      http://github.com/xianyi/OpenBLAS.git
         GIT_TAG             ${OPENBLAS_COMMIT}
         PREFIX              ${CBLAS_SOURCES_DIR}
         INSTALL_DIR         ${CBLAS_INSTALL_DIR}
         BUILD_IN_SOURCE     1
-        BUILD_COMMAND       make -j$(nproc) ${COMMON_ARGS} ${OPTIONAL_ARGS}
+        BUILD_COMMAND       make -j$(nproc) TARGET=ARMV8 ${COMMON_ARGS} ${OPTIONAL_ARGS} 
         INSTALL_COMMAND     make install NO_SHARED=1 NO_LAPACK=1 PREFIX=<INSTALL_DIR> 
         UPDATE_COMMAND      ""
         CONFIGURE_COMMAND   ""
@@ -55,8 +55,8 @@ ELSE(NOT WIN32)
     ExternalProject_Add(
         extern_openblas
         ${EXTERNAL_PROJECT_LOG_ARGS}
-        GIT_REPOSITORY      https://github.com/xianyi/OpenBLAS.git
-        GIT_TAG            "v0.3.7"
+        GIT_REPOSITORY      http://github.com/xianyi/OpenBLAS.git
+        GIT_TAG            "v0.2.18"
         PREFIX              ${CBLAS_SOURCES_DIR}
         INSTALL_DIR         ${CBLAS_INSTALL_DIR}
         BUILD_IN_SOURCE     0

@@ -27,7 +27,7 @@ UNSET_VAR(PROTOBUF_LIBRARY)
 UNSET_VAR(PROTOBUF_INCLUDE_DIR)
 UNSET_VAR(Protobuf_PROTOC_EXECUTABLE)
 function(protobuf_generate_python SRCS)
-    # shameless copy from https://github.com/Kitware/CMake/blob/master/Modules/FindProtobuf.cmake
+    # shameless copy from http://github.com/Kitware/CMake/blob/master/Modules/FindProtobuf.cmake
     if(NOT ARGN)
         message(SEND_ERROR "Error: PROTOBUF_GENERATE_PYTHON() called without any proto files")
         return()
@@ -198,7 +198,7 @@ FUNCTION(build_protobuf TARGET_NAME BUILD_FOR_HOST)
             "-Dprotobuf_MSVC_STATIC_RUNTIME=${MSVC_STATIC_CRT}")
     ENDIF()
 
-    SET(PROTOBUF_REPOSITORY  https://github.com/protocolbuffers/protobuf.git)
+    SET(PROTOBUF_REPOSITORY  http://github.com/protocolbuffers/protobuf.git)
     SET(PROTOBUF_TAG         9f75c5aa851cd877fb0d93ccc31b8567a6706546)
 
     cache_third_party(${TARGET_NAME}

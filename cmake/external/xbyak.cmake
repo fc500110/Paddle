@@ -33,7 +33,7 @@ ExternalProject_Add(
     ${EXTERNAL_PROJECT_LOG_ARGS}
     ${SHALLOW_CLONE}
     DEPENDS             ""
-    GIT_REPOSITORY      "https://github.com/herumi/xbyak.git"
+    GIT_REPOSITORY      "http://github.com/herumi/xbyak.git"
     GIT_TAG             "v5.661"  # Jul 26th
     PREFIX              ${XBYAK_PREFIX_DIR}
     UPDATE_COMMAND      ""

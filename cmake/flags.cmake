@@ -12,7 +12,7 @@ function(CheckCompilerCXX11Flag)
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
         # cmake >= 3.0 compiler id "AppleClang" on Mac OS X, otherwise "Clang"
         # Apple Clang is a different compiler than upstream Clang which havs different version numbers.
-        # https://gist.github.com/yamaya/2924292
+        # http://gist.github.com/yamaya/2924292
         if(APPLE)  # cmake < 3.0 compiler id "Clang" on Mac OS X
             if(${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS 5.1)
                 message(FATAL_ERROR "Unsupported AppleClang version. AppleClang >= 5.1 required.")
@@ -135,7 +135,7 @@ endif()
 # Common flags. the compiler flag used for C/C++ sources whenever release or debug
 # Do not care if this flag is support for gcc.
 
-# https://github.com/PaddlePaddle/Paddle/issues/12773
+# http://github.com/PaddlePaddle/Paddle/issues/12773
 if (NOT WIN32)
 set(COMMON_FLAGS
     -fPIC
@@ -188,7 +188,7 @@ set(GPU_COMMON_FLAGS
     -Wno-error=array-bounds # Warnings in Eigen::array
 )
 if (NOT WITH_NV_JETSON) 
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
+  #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
 endif()
 endif(NOT WIN32)
 

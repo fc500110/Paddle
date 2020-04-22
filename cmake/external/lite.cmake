@@ -48,7 +48,7 @@ if (NOT LITE_SOURCE_DIR OR NOT LITE_BINARY_DIR)
   ExternalProject_Add(
       ${LITE_PROJECT}
       ${EXTERNAL_PROJECT_LOG_ARGS}
-      GIT_REPOSITORY      "https://github.com/PaddlePaddle/Paddle-Lite.git"
+      GIT_REPOSITORY      "http://github.com/PaddlePaddle/Paddle-Lite.git"
       GIT_TAG             ${LITE_GIT_TAG}
       PREFIX              ${LITE_SOURCES_DIR}
       UPDATE_COMMAND      ""
